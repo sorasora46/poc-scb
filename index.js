@@ -14,6 +14,10 @@ const applicationSecret = process.env.API_SECRET;
 
 app.use(express.json());
 
+app.get('/healthcheck', (req, res) => {
+  res.send("Hello, world");
+})
+
 // test axios
 app.get("/fetch-data", async (req, res) => {
   try {
