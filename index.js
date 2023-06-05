@@ -29,10 +29,12 @@ app.get("/fetch-data", async (req, res) => {
   }
 });
 
-app.get("/access-token", async (req, res) => {
+app.get("/payment", async (req, res) => {
   try {
     const requestUId = uuid();
-    const token_response = await axios.post(SCB_TOKEN,
+
+    // request access token from SCB
+    const scb_response = await axios.post(SCB_TOKEN,
     {
       applicationKey: applicationKey,
       applicationSecret: applicationSecret,
@@ -43,7 +45,8 @@ app.get("/access-token", async (req, res) => {
         requestUId: requestUId,
       }
     });
-    res.send(token_response.data);
+    const res_data = scb_response.data
+    res.send(res_data);
   } catch (e) {
     console.error(e.message);
   }
