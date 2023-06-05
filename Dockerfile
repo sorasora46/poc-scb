@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+COPY .env .env
+
 EXPOSE 8110
 
-CMD ["node", "index.js"]
+CMD ["node", "-r", "dotenv/config", "index.js"]
