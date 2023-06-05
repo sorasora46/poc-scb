@@ -43,7 +43,7 @@ app.get("/access-token", async (req, res) => {
         requestUId: requestUId,
       }
     });
-    res.send(token_response);
+    res.send(token_response.data);
   } catch (e) {
     console.error(e.message);
   }
