@@ -18,17 +18,6 @@ app.get('/healthcheck', (req, res) => {
   res.send("Hello, world");
 })
 
-// test axios
-app.get("/fetch-data", async (req, res) => {
-  try {
-    const response = await axios.get('http://localhost:8220/');
-    const message = response.data.message;
-    res.send(message);
-  } catch (e) {
-    console.error(e.message);
-  }
-});
-
 app.get("/payment", async (req, res) => {
   try {
     const requestUId = uuid();
