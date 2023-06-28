@@ -70,15 +70,23 @@ app.get("/qrcode", async (req, res) => {
 
     const qrcode_response = await axios.post(
       SCB_QRCODE,
-      {},
+      {
+        qrType: "PP",
+        amount: "1",
+        ppType: "BILLERID",
+        ppId: "014000006793186",
+        ref1: "REF111",
+        ref3: "SCB111",
+      },
       {
         headers: {
-          authorization: token,
+          authorization: `Bearer ${token}`,
           resourceOwnerId: applicationKey,
           requestUId: requestUId,
         },
       }
     );
+    res.send(qrcode_response.data.qrImage);
   } catch (e) {
     console.error(e.message);
   }
