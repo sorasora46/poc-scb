@@ -66,7 +66,7 @@ app.get("/qrcode", async (req, res) => {
       }
     );
 
-    const token = token_response.data;
+    const token = token_response.data.accessToken;
 
     const qrcode_response = await axios.post(
       SCB_QRCODE,
